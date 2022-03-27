@@ -26,6 +26,9 @@ class _MainSliderState extends State<MainSlider> {
           width: double.infinity,
           child: CarouselSlider(
             options: CarouselOptions(
+              onPageChanged: (index, reason) {
+                setActiveDot(index);
+              },
               autoPlayCurve: Curves.fastLinearToSlowEaseIn,
               autoPlayAnimationDuration: const Duration(seconds: 2),
             ),
@@ -80,7 +83,7 @@ class ActiveDot extends StatelessWidget {
         width: 25,
         height: 8,
         decoration: BoxDecoration(
-          color: Colors.white,
+          color: Colors.black,
           borderRadius: BorderRadius.circular(5),
         ),
       ),
