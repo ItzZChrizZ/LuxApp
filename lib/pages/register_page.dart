@@ -2,16 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:luxapp/components/custom_input.dart';
 import 'package:luxapp/components/custom_rounded.dart';
 import 'package:luxapp/constants.dart';
-import 'package:luxapp/pages/register_page.dart';
+import 'package:luxapp/pages/login_page.dart';
 
-class LoginPage extends StatefulWidget {
-  const LoginPage({Key? key}) : super(key: key);
+class RegisterPage extends StatefulWidget {
+  const RegisterPage({Key? key}) : super(key: key);
 
   @override
-  State<LoginPage> createState() => _LoginPageState();
+  State<RegisterPage> createState() => _RegisterPageState();
 }
 
-class _LoginPageState extends State<LoginPage> {
+class _RegisterPageState extends State<RegisterPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -26,7 +26,7 @@ class _LoginPageState extends State<LoginPage> {
                   top: 24,
                 ),
                 child: const Text(
-                  "Welcome to LuX\nLogin to Your Account",
+                  "Create A New Account",
                   style: Constants.boldHeading,
                   textAlign: TextAlign.center,
                 ),
@@ -36,18 +36,18 @@ class _LoginPageState extends State<LoginPage> {
                   CustomInput(onPressed: () {}, text: "Email..."),
                   CustomInput(onPressed: () {}, text: "Password..."),
                   CustomButtonRounded(
-                    text: "Login",
+                    text: "Create New Account",
                     onPressed: () {},
                     outlineBtn: false,
                   ),
                 ],
               ),
               CustomButtonRounded(
-                text: "Create Account ",
+                text: "Back To Login",
                 onPressed: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => const RegisterPage()),
+                    MaterialPageRoute(builder: (context) => const LoginPage()),
                   );
                 },
                 outlineBtn: true,

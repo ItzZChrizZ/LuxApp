@@ -1,6 +1,8 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:luxapp/pages/loading_page.dart';
+import 'package:luxapp/pages/login_page.dart';
 import 'package:luxapp/pages/main_page.dart';
 
 class LandingPage extends StatelessWidget {
@@ -20,7 +22,28 @@ class LandingPage extends StatelessWidget {
           );
         }
         if (snapshot.connectionState == ConnectionState.done) {
-          return const MainPage();
+          return StreamBuilder(
+            stream: FirebaseAuth.instance.authStateChanges(),
+            builder: (context, streamSnapshot) {
+              if (streamSnapshot.hasError) {
+                return Scaffold(
+                  body: Center(
+                    child: Text("Error: ${streamSnapshot.error}"),
+                  ),
+                );
+              }
+              if (streamSnapshot.connectionState == ConnectionState.active) {
+                User? _user = streamSnapshot.data as User?;
+
+                if (_user == null) {
+                  return const LoginPage();
+                } else {
+                  return const MainPage();
+                }
+              }
+              return const LoadingPage();
+            },
+          );
         }
         return const LoadingPage();
       },
