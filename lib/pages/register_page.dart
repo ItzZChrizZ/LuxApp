@@ -22,7 +22,7 @@ class _RegisterPageState extends State<RegisterPage> {
         builder: (context) {
           return AlertDialog(
             title: const Text("Error"),
-            content:  Text(error),
+            content: Text(error),
             actions: [
               // ignore: deprecated_member_use
               FlatButton(
@@ -54,13 +54,22 @@ class _RegisterPageState extends State<RegisterPage> {
   }
 
   void _submitForm() async {
+    setState(() {
+      _registerFormLoading = true;
+    });
+
     String? _createAccountFeedback = await _createAccount();
     if (_createAccountFeedback != null) {
       _alertDialogBuilder(_createAccountFeedback);
+      setState(() {
+        _registerFormLoading = false;
+      });
+    } else {
+      Navigator.pop(context);
     }
   }
 
-  final bool _registerFormLoading = false;
+  bool _registerFormLoading = false;
 
   String _registerEmail = "";
   String _registerPassword = "";
