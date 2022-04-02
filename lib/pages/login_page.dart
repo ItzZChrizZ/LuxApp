@@ -33,8 +33,14 @@ class _LoginPageState extends State<LoginPage> {
               ),
               Column(
                 children: [
-                  CustomInput(onPressed: () {}, text: "Email..."),
-                  CustomInput(onPressed: () {}, text: "Password..."),
+                  CustomInput(
+                    onPressed: () {},
+                    text: "Email...",
+                  ),
+                  CustomInput(
+                    onPressed: () {},
+                    text: "Password...",
+                  ),
                   CustomButtonRounded(
                     text: "Login",
                     onPressed: () {},
@@ -47,7 +53,8 @@ class _LoginPageState extends State<LoginPage> {
                 onPressed: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => const RegisterPage()),
+                    MaterialPageRoute(
+                        builder: (context) => const RegisterPage()),
                   );
                 },
                 outlineBtn: true,
