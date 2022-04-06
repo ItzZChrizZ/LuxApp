@@ -1,17 +1,14 @@
 import 'package:flutter/material.dart';
 
-
 class GetAppBar extends StatelessWidget with PreferredSizeWidget {
   final String title;
   final Icon? icon;
-  final Icon? icon2;
-  final Icon? icon3;
+  final IconButton? icnBtn;
   const GetAppBar({
     Key? key,
     required this.title,
     this.icon,
-    this.icon2,
-    this.icon3,
+    this.icnBtn,
   }) : super(key: key);
 
   @override

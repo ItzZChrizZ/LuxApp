@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:luxapp/pages/account_page.dart';
-import 'package:luxapp/pages/cart_page.dart';
+import 'package:luxapp/components/custom_appbar.dart';
 import 'package:luxapp/pages/home_page.dart';
-import 'package:luxapp/pages/login_page.dart';
 import 'package:luxapp/pages/store_page.dart';
 
 import '../json/constant.dart';
+import 'account_page.dart';
+import 'cart_page.dart';
+import 'login_page.dart';
 
 class MainPage extends StatefulWidget {
   const MainPage({Key? key}) : super(key: key);
@@ -19,6 +20,13 @@ class _MainPageState extends State<MainPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: const GetAppBar(
+        title: "Lux",
+        icon: Icon(
+          Icons.menu,
+          color: Colors.black,
+        ),
+      ),
       bottomNavigationBar: getFooter(),
       body: getBody(),
     );
