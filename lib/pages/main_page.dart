@@ -1,7 +1,8 @@
-// ignore_for_file: prefer_typing_uninitialized_variables
+// ignore_for_file: prefer_typing_uninitialized_variables, avoid_types_as_parameter_names
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:luxapp/components/Homepage/custom_botnavbar.dart';
 import 'package:luxapp/components/custom_appbar.dart';
 import 'package:luxapp/pages/account_page.dart';
 import 'package:luxapp/pages/categories_page.dart';
@@ -18,7 +19,21 @@ class MainPage extends StatefulWidget {
 }
 
 class _MainPageState extends State<MainPage> {
-  int activeTab = 0;
+  late PageController _tabsPageController;
+  int _selectedTab = 0;
+
+  @override
+  void initState() {
+    _tabsPageController = PageController();
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    _tabsPageController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -29,12 +44,30 @@ class _MainPageState extends State<MainPage> {
           color: Colors.black,
         ),
       ),
+      bottomNavigationBar: GetBottomNavBar(
+        selectedTab: _selectedTab,
+        tabPressed: (num) {
+          _tabsPageController.animateToPage(
+            num,
+            duration: const Duration(
+              milliseconds: 300,
+            ),
+            curve: Curves.easeOutCubic,
+          );
+        },
+      ),
       body: getBody(),
     );
   }
 
   Widget getBody() {
     return PageView(
+      controller: _tabsPageController,
+      onPageChanged: (num) {
+        setState(() {
+          _selectedTab = num;
+        });
+      },
       children: [
         const HomePage(),
         const CategoriesPage(),
