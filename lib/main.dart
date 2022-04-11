@@ -17,6 +17,8 @@ class MyApp extends StatelessWidget {
         textTheme: GoogleFonts.latoTextTheme(
           Theme.of(context).textTheme,
         ),
+        colorScheme: ColorScheme.fromSwatch()
+            .copyWith(secondary: const Color(0xffff1e00)),
       ),
       home: LandingPage(),
     );

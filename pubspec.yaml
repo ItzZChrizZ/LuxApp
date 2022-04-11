@@ -63,10 +63,10 @@ flutter:
   
   
   uses-material-design: true
-assets:
-  - assets/images/
-  - assets/icons/
-fonts:
+  assets:
+    - assets/images/
+    - assets/icons/
+  fonts:
     - family: Lato
       fonts:
         - asset: assets\fonts\Lato-Regular.ttf

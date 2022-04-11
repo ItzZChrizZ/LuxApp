@@ -1,11 +1,13 @@
+// ignore_for_file: prefer_typing_uninitialized_variables
+
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:luxapp/components/custom_appbar.dart';
+import 'package:luxapp/pages/account_page.dart';
+import 'package:luxapp/pages/categories_page.dart';
 import 'package:luxapp/pages/home_page.dart';
-import 'package:luxapp/pages/store_page.dart';
-
-import '../json/constant.dart';
-import 'account_page.dart';
 import 'cart_page.dart';
+import 'loading_page.dart';
 import 'login_page.dart';
 
 class MainPage extends StatefulWidget {
@@ -27,53 +29,39 @@ class _MainPageState extends State<MainPage> {
           color: Colors.black,
         ),
       ),
-      bottomNavigationBar: getFooter(),
       body: getBody(),
     );
   }
 
   Widget getBody() {
-    return IndexedStack(
-      index: activeTab,
-      children: const [
-        HomePage(),
-        StorePage(),
-        AccountPage(),
-        CartPage(),
-        LoginPage(),
-      ],
-    );
-  }
+    return PageView(
+      children: [
+        const HomePage(),
+        const CategoriesPage(),
+        const CartPage(),
+        StreamBuilder(
+          stream: FirebaseAuth.instance.authStateChanges(),
+          builder: (context, streamSnapshot) {
+            if (streamSnapshot.hasError) {
+              return Scaffold(
+                body: Center(
+                  child: Text("Error: ${streamSnapshot.error}"),
+                ),
+              );
+            }
+            if (streamSnapshot.connectionState == ConnectionState.active) {
+              User? _user = streamSnapshot.data as User?;
 
-  Widget getFooter() {
-    return Container(
-      height: 80,
-      decoration: const BoxDecoration(
-        color: Colors.white,
-        border: Border(
-          top: BorderSide(
-            color: Colors.black12,
-          ),
+              if (_user == null) {
+                return const LoginPage();
+              } else {
+                return const AccountPage();
+              }
+            }
+            return const LoadingPage();
+          },
         ),
-      ),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: List.generate(
-          itemsTab.length,
-          (index) => IconButton(
-            onPressed: () {
-              setState(() {
-                activeTab = index;
-              });
-            },
-            icon: Icon(
-              itemsTab[index]["icon"],
-              size: itemsTab[index]["size"],
-              color: activeTab == index ? Colors.amber : Colors.black,
-            ),
-          ),
-        ),
-      ),
+      ],
     );
   }
 }

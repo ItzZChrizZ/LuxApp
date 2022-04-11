@@ -328,10 +328,9 @@ List menusMore = [
 
 List itemsTab = [
   {"icon": Icons.home, "size": 28.0},
-  {"icon": Icons.category, "size": 22.0},
-  {"icon": Icons.details, "size": 21.0},
-  {"icon": Icons.shopping_bag, "size": 22.0},
-  {"icon": Icons.more_horiz, "size": 40.0},
+  {"icon": Icons.category, "size": 28.0},
+  {"icon": Icons.shopping_bag, "size": 28.0},
+  {"icon": Icons.more_horiz, "size": 28.0},
 ];
 
 List accountList = [
