@@ -5,9 +5,9 @@ import 'package:flutter/material.dart';
 import 'package:luxapp/components/Homepage/custom_botnavbar.dart';
 import 'package:luxapp/components/custom_appbar.dart';
 import 'package:luxapp/pages/account_page.dart';
-import 'package:luxapp/pages/categories_page.dart';
 import 'package:luxapp/pages/home_page.dart';
-import 'cart_page.dart';
+import 'package:luxapp/pages/saved_page.dart';
+import 'package:luxapp/pages/search_page.dart';
 import 'loading_page.dart';
 import 'login_page.dart';
 
@@ -38,11 +38,8 @@ class _MainPageState extends State<MainPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: const GetAppBar(
+        iconbutton: false,
         title: "Lux",
-        icon: Icon(
-          Icons.menu,
-          color: Colors.black,
-        ),
       ),
       bottomNavigationBar: GetBottomNavBar(
         selectedTab: _selectedTab,
@@ -70,8 +67,8 @@ class _MainPageState extends State<MainPage> {
       },
       children: [
         const HomePage(),
-        const CategoriesPage(),
-        const CartPage(),
+        const SearchPage(),
+        const SavedPage(),
         StreamBuilder(
           stream: FirebaseAuth.instance.authStateChanges(),
           builder: (context, streamSnapshot) {

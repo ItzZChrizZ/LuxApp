@@ -96,8 +96,8 @@ class BottomTabBtn extends StatelessWidget {
           horizontal: 10.0,
         ),
         child: Image(
-          height: 32,
-          width: 32,
+          height: 26,
+          width: 26,
           color: _selected
               ? Theme.of(context).colorScheme.secondary
               : Colors.black,
