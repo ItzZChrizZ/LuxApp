@@ -9,4 +9,9 @@ class Constants {
     fontSize: 22,
     fontWeight: FontWeight.bold,
   );
+  static const boxNumbers = TextStyle(
+    fontSize: 16,
+    fontWeight: FontWeight.w600,
+    color: Colors.white,
+  );
 }

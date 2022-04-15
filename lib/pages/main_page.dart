@@ -3,7 +3,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:luxapp/components/Homepage/custom_botnavbar.dart';
-import 'package:luxapp/components/custom_appbar.dart';
 import 'package:luxapp/pages/account_page.dart';
 import 'package:luxapp/pages/home_page.dart';
 import 'package:luxapp/pages/saved_page.dart';
@@ -37,10 +36,6 @@ class _MainPageState extends State<MainPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const GetAppBar(
-        iconbutton: false,
-        title: "Lux",
-      ),
       bottomNavigationBar: GetBottomNavBar(
         selectedTab: _selectedTab,
         tabPressed: (num) {
