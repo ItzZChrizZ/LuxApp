@@ -18,19 +18,6 @@ class CustomActionBar extends StatelessWidget {
     bool? _hasTitle = hasTittle ?? true;
     return SafeArea(
       child: Container(
-        decoration: BoxDecoration(
-          gradient: LinearGradient(
-            colors: [
-              Colors.white,
-              Colors.white.withOpacity(0),
-            ],
-            begin: const Alignment(
-              0,
-              0,
-            ),
-            end: const Alignment(0, 1),
-          ),
-        ),
         padding: const EdgeInsets.only(
           top: 20,
           left: 24,

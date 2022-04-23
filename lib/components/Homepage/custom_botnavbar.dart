@@ -1,4 +1,4 @@
-// ignore_for_file: avoid_unnecessary_containers
+// ignore_for_file: avoid_unnecessary_containers, prefer_typing_uninitialized_variables
 
 import 'package:flutter/material.dart';
 
@@ -71,7 +71,7 @@ class _GetBottomNavBarState extends State<GetBottomNavBar> {
 class BottomTabBtn extends StatelessWidget {
   final String imagePath;
   final bool? selected;
-  // ignore: prefer_typing_uninitialized_variables
+
   final onPressed;
   const BottomTabBtn(
       {Key? key, required this.imagePath, this.selected, this.onPressed})
